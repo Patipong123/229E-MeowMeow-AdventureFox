@@ -3,6 +3,7 @@ using UnityEngine;
 public class Berry : MonoBehaviour
 {
     public int berryValue = 1;
+    public AudioClip coinSound;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,6 +13,7 @@ public class Berry : MonoBehaviour
             if (berryUI != null)
             {
                 berryUI.AddBerry(berryValue);
+                AudioSource.PlayClipAtPoint(coinSound, transform.position, 15f);
             }
 
             Destroy(gameObject); 
