@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
         float desiredX = target.position.x + xOffset;
         float smoothedX = Mathf.Lerp(transform.position.x, desiredX, smoothSpeed);
 
-        // จำกัดให้อยู่ระหว่าง minX และ maxX
+        
         float clampedX = Mathf.Clamp(smoothedX, minX, maxX);
 
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);

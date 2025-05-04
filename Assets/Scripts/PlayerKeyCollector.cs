@@ -19,16 +19,33 @@ public class PlayerKeyCollector : MonoBehaviour
             if (hasKey)
             {
                 Debug.Log("Game Complete!");
-                Time.timeScale = 0f;
 
                 if (levelCompleteUI != null)
-                    levelCompleteUI.SetActive(true); 
+                    levelCompleteUI.SetActive(true);
+
+                
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    MonoBehaviour controller = player.GetComponent<PlayerController>();
+                    if (controller != null)
+                        controller.enabled = false;
+                }
+
+                
+                StartCoroutine(LoadEndSceneWithDelay(5f));
             }
             else
             {
                 Debug.Log("Don't Have Key");
             }
         }
+    }
+
+    private System.Collections.IEnumerator LoadEndSceneWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("End");
     }
 
 

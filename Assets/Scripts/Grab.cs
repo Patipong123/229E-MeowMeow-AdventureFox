@@ -20,7 +20,7 @@ public class Grab : MonoBehaviour
 
     void Update()
     {
-        // กด E เพื่อเกาะ / ปล่อย
+        
         if (Input.GetKeyDown(grabKey) && isNearGrabbable)
         {
             isGrabbing = !isGrabbing;
@@ -69,7 +69,7 @@ public class Grab : MonoBehaviour
 
         }
 
-        // ตามตำแหน่งสิ่งที่เกาะ
+        
         if (isGrabbing && grabTarget != null)
         {
             transform.position = grabTarget.position + grabOffset;
