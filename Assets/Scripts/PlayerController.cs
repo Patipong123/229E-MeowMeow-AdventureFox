@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -67,18 +67,13 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(1); 
-        }
-    }
+    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
+            
             TakeDamage(1);
         }
     }
@@ -96,7 +91,7 @@ public class PlayerController : MonoBehaviour
         if (currentHearts <= 0)
         {
             Debug.Log("Game Over!");
-            // TODO: µÒÂ / ÃÕÊµÒÃì· / ¨ºà¡Á
+            
         }
     }
 }
