@@ -20,6 +20,15 @@ public class PlayerController : MonoBehaviour
     public HeartUI heartUI;
     private Animator animator;
 
+    public GameOverUI gameOverUI;
+
+    private bool isDead = false;
+
+    [SerializeField] private float knockbackForce = 10f;
+    private bool isKnockback = false;
+    private float knockbackDuration = 0.2f;
+    private float knockbackTimer = 0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,6 +82,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isKnockback)
+        {
+            knockbackTimer -= Time.fixedDeltaTime;
+            if (knockbackTimer <= 0f)
+            {
+                isKnockback = false;
+            }
+
+            return; 
+        }
+
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
     }
 
@@ -84,12 +104,23 @@ public class PlayerController : MonoBehaviour
         {
             
             TakeDamage(1);
+
+            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+            knockbackDirection.y = 0f;
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            // ตั้งค่าว่าโดน knockback
+            isKnockback = true;
+            knockbackTimer = knockbackDuration;
         }
     }
 
     void TakeDamage(int damage)
     {
+        if(isDead) return; 
+
         currentHearts -= damage;
+
         if (currentHearts < 0) currentHearts = 0;
 
         Debug.Log("Hearts left: " + currentHearts);
@@ -99,8 +130,13 @@ public class PlayerController : MonoBehaviour
 
         if (currentHearts <= 0)
         {
+            isDead = true; 
             Debug.Log("Game Over!");
-            
+            Time.timeScale = 0f; 
+            if (gameOverUI != null)
+                gameOverUI.ShowRetry(); 
         }
+
+
     }
 }

@@ -36,7 +36,7 @@ public class EnemyMove : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentTarget.position) < 0.5f)
         {
-            Debug.Log("Switching target");
+            
             currentTarget = currentTarget == pointA ? pointB : pointA;
         }
     }

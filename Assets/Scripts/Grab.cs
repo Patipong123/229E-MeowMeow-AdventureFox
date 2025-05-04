@@ -42,7 +42,7 @@ public class Grab : MonoBehaviour
             }
             else
             {
-                transform.SetParent(null); // <<< แยกจากเถาวัลย์
+                transform.SetParent(null); 
                 rb.bodyType = RigidbodyType2D.Dynamic;    
                 rb.gravityScale = 1f;
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -51,7 +51,7 @@ public class Grab : MonoBehaviour
             }
         }
 
-        // ปล่อย + กระโดดออกเมื่อกด Space
+        
         if (isGrabbing && Input.GetKeyDown(KeyCode.Space))
         {
             isGrabbing = false;

@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - Grab
+  - Key
+  - Pass
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,19 @@ public class BerryUI : MonoBehaviour
         UpdateUI();
     }
 
+    public bool TryUseBerry(int amount)
+    {
+        if (berryCount >= amount)
+        {
+            berryCount -= amount;
+            UpdateUI();
+            return true;
+        }
+
+        return false;
+    }
+
+
     private void UpdateUI()
     {
         berryText.text = "x " + berryCount.ToString();
