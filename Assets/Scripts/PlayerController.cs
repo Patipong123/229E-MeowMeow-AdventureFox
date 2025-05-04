@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;
     public Transform groundCheck;          
     public float checkRadius = 0.1f;
-    public LayerMask groundLayer;         
+    public LayerMask groundLayer;
+
+    public float fallThresholdY = -10f;
 
     private Rigidbody2D rb;
     private float moveInput;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
         moveInput = Input.GetAxisRaw("Horizontal");
@@ -57,7 +60,13 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); 
         }
 
-        
+        if (transform.position.y < fallThresholdY && currentHearts > 0)
+        {
+            currentHearts = 0;
+            TakeDamage(0); 
+        }
+
+
 
 
     }
