@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      full_heart-removebg-preview_0: -2138994430491834582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

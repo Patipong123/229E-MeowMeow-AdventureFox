@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crosshair-removebg-preview_0: 8914723761199293627
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
