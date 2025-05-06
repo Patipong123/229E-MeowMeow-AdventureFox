@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             knockbackDirection.y = 0f;
             rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
-            // ตั้งค่าว่าโดน knockback
+            
             isKnockback = true;
             knockbackTimer = knockbackDuration;
         }
